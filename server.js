@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/nytscrape");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytscrape");
 
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
